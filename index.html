@@ -99,9 +99,11 @@
     </div>
   </header>
 
-  <!-- HERO with mesh gradient ambient (gentle motion) -->
-  <section class="hero hero--mesh" aria-label="Welcome">
-    <canvas class="mesh-canvas" aria-hidden="true"></canvas>
+  <!-- HERO — photo background from original site + subtle mesh-gradient ambient overlay -->
+  <section class="hero hero--photo hero--mesh" aria-label="Welcome"
+    style="--hero-img: url('https://static.wixstatic.com/media/11062b_e12e778250c54ec0aa0d967b228e9cc3f000.jpg');">
+    <div class="hero-bg"></div>
+    <canvas class="mesh-canvas" aria-hidden="true" style="opacity:0.45;mix-blend-mode:screen;"></canvas>
     <div class="container" style="grid-template-columns: 1fr; max-width: 880px; text-align: center;">
       <div class="hero__content reveal" style="margin: 0 auto;">
         <div class="hero__badge">Therapy in Colorado · Coaching worldwide</div>
