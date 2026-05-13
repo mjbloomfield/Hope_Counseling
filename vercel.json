@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/individual-therapy",      "destination": "/mens-therapy",       "permanent": true },
+    { "source": "/individual-therapy.html", "destination": "/mens-therapy.html",  "permanent": true },
+    { "source": "/midlife-therapy",         "destination": "/therapy",            "permanent": true },
+    { "source": "/midlife-therapy.html",    "destination": "/therapy.html",       "permanent": true },
+    { "source": "/family-therapy",          "destination": "/therapy",            "permanent": true },
+    { "source": "/family-therapy.html",     "destination": "/therapy.html",       "permanent": true },
+    { "source": "/grief-counseling",        "destination": "/therapy",            "permanent": true },
+    { "source": "/grief-counseling.html",   "destination": "/therapy.html",       "permanent": true },
+    { "source": "/outdoor-therapy",         "destination": "/therapy",            "permanent": true },
+    { "source": "/outdoor-therapy.html",    "destination": "/therapy.html",       "permanent": true },
+    { "source": "/credentials",             "destination": "/about",              "permanent": true },
+    { "source": "/credentials.html",        "destination": "/about.html",         "permanent": true }
+  ]
+}

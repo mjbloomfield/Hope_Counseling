@@ -1294,3 +1294,327 @@ strong { font-weight: 600; color: var(--color-text); }
 @media (max-width: 500px) {
   .photo-service-card-grid { grid-template-columns: 1fr; }
 }
+
+/* ==============================================
+   2026 REDESIGN — TWO-BRANCH STRUCTURE
+   ============================================== */
+
+/* --- Top name bar (sits above the regular site header) --- */
+.name-bar {
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+  text-align: center;
+  padding: 10px 24px;
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+}
+.name-bar strong {
+  color: var(--color-white);
+  font-weight: 600;
+}
+.name-bar__sub {
+  color: rgba(255,255,255,0.65);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: 12px;
+}
+@media (max-width: 600px) {
+  .name-bar__sub { display: block; margin: 4px 0 0; }
+}
+
+/* --- Mesh gradient ambient canvas --- */
+.mesh-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.hero--mesh { position: relative; overflow: hidden; }
+.hero--mesh .container { position: relative; z-index: 2; }
+
+/* --- Soft fade-in reveal (gentle motion, wellness-appropriate) --- */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .mesh-canvas { display: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* --- Two-branch split (Therapy / Coaching) --- */
+.branch-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 16px;
+}
+.branch-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px;
+  color: var(--color-white);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.branch-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--branch-img);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  z-index: 0;
+}
+.branch-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,40,30,0.25) 0%, rgba(20,40,30,0.85) 80%);
+  z-index: 1;
+}
+.branch-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); color: var(--color-white); }
+.branch-card:hover::before { transform: scale(1.04); }
+.branch-card__inner { position: relative; z-index: 2; }
+.branch-card__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: 10px;
+  display: block;
+}
+.branch-card h2 {
+  color: var(--color-white);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 12px;
+}
+.branch-card p {
+  color: rgba(255,255,255,0.92);
+  font-size: 1rem;
+  margin-bottom: 16px;
+  max-width: 36ch;
+}
+.branch-card__scope {
+  display: inline-block;
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.95);
+}
+.branch-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-accent-light);
+}
+.branch-card__cta::after { content: '→'; transition: transform 0.2s ease; }
+.branch-card:hover .branch-card__cta::after { transform: translateX(4px); }
+
+/* When one branch is featured, give it more weight */
+.branch-split--therapy-lead { grid-template-columns: 1.4fr 1fr; }
+.branch-split--coaching-lead { grid-template-columns: 1fr 1.4fr; }
+
+@media (max-width: 768px) {
+  .branch-split,
+  .branch-split--therapy-lead,
+  .branch-split--coaching-lead { grid-template-columns: 1fr; }
+}
+
+/* --- Pull quote (inspirational breakup) --- */
+.pull-quote {
+  background: var(--color-bg-alt);
+  padding: 64px 24px;
+  text-align: center;
+}
+.pull-quote--photo {
+  background-image: var(--pq-img);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  color: var(--color-white);
+}
+.pull-quote--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 54, 40, 0.72);
+}
+.pull-quote--photo .pull-quote__inner { position: relative; z-index: 1; }
+.pull-quote__inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.pull-quote blockquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+}
+.pull-quote--photo blockquote { color: var(--color-white); }
+.pull-quote cite {
+  font-style: normal;
+  font-size: 0.92rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.04em;
+}
+.pull-quote--photo cite { color: rgba(255,255,255,0.75); }
+@media (max-width: 900px) {
+  .pull-quote--photo { background-attachment: scroll; }
+}
+
+/* --- Sticky stack (used on therapy/coaching landing pages) --- */
+.stack-section {
+  padding: var(--section-v) 0;
+}
+.stack-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.stack-visual {
+  position: sticky;
+  top: 96px;
+  height: fit-content;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+  min-height: 420px;
+}
+.stack-visual__inner {
+  padding: 36px 32px;
+  position: relative;
+  min-height: 420px;
+  background-image: var(--stack-img);
+  background-size: cover;
+  background-position: center;
+}
+.stack-visual__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(27,54,40,0.85) 0%, rgba(27,54,40,0.55) 100%);
+}
+.stack-state {
+  position: absolute;
+  inset: 0;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.stack-state.active { opacity: 1; }
+.stack-state h3 {
+  color: var(--color-white);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.stack-state p {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.97rem;
+}
+.stack-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.stack-feature {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  opacity: 0.45;
+  transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+.stack-feature.active {
+  opacity: 1;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
+  transform: translateY(-2px);
+}
+.stack-feature__num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+.stack-feature h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.stack-feature p { font-size: 0.95rem; margin-bottom: 12px; }
+.stack-feature a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+@media (max-width: 900px) {
+  .stack-container { grid-template-columns: 1fr; }
+  .stack-visual { position: relative; top: 0; min-height: 280px; }
+  .stack-feature { opacity: 1; }
+}
+
+/* --- Sub-branch dropdown grouping --- */
+.nav-dropdown__group {
+  padding: 8px 12px 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.nav-dropdown__divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 6px 8px;
+}
+
+/* --- Updated nav-dropdown menu width for two-column branches --- */
+.nav-dropdown__menu--branches {
+  min-width: 460px;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 12px;
+}
+.nav-dropdown:hover .nav-dropdown__menu--branches,
+.nav-dropdown:focus-within .nav-dropdown__menu--branches {
+  display: grid;
+}
+.nav-dropdown__menu--branches > div {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 768px) {
+  .nav-dropdown__menu--branches {
+    min-width: 0;
+    grid-template-columns: 1fr;
+    display: block;
+  }
+}
