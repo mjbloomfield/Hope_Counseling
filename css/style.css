@@ -1641,3 +1641,48 @@ strong { font-weight: 600; color: var(--color-text); }
     display: block;
   }
 }
+
+/* --- Safe Zone badge --- */
+.safe-zone {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.safe-zone img {
+  max-width: 150px;
+  margin: 0 auto 12px;
+  display: block;
+}
+.safe-zone__caption {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin: 0;
+  line-height: 1.5;
+}
+.safe-zone__caption strong { color: var(--color-text-mid); }
+
+/* Compact footer Safe Zone */
+.footer-safezone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+}
+.footer-safezone img {
+  width: 36px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+.footer-safezone span {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.04em;
+}
