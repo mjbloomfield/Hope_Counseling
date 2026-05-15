@@ -1318,6 +1318,25 @@ strong { font-weight: 600; color: var(--color-text); }
   .photo-service-card-grid { grid-template-columns: 1fr; }
 }
 
+/* Branched 4-up layout (therapy left, coaching right) — 4 cols on desktop, drops to 2 on tablet */
+.photo-service-card-grid--branched {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  row-gap: 20px;
+}
+.photo-service-card-grid--branched .photo-service-card { height: 280px; }
+.photo-service-card-grid--branched .photo-service-card__content h3 { font-size: 1.1rem; }
+.photo-service-card-grid--branched .photo-service-card__content p { font-size: 0.82rem; }
+@media (max-width: 1024px) {
+  .photo-service-card-grid--branched { grid-template-columns: 1fr 1fr; }
+  .photo-service-card-grid--branched .photo-service-card { height: 320px; }
+  .photo-service-card-grid--branched .photo-service-card__content h3 { font-size: 1.25rem; }
+  .photo-service-card-grid--branched .photo-service-card__content p { font-size: 0.88rem; }
+}
+@media (max-width: 500px) {
+  .photo-service-card-grid--branched { grid-template-columns: 1fr; }
+}
+
 /* ==============================================
    2026 REDESIGN — TWO-BRANCH STRUCTURE
    ============================================== */
